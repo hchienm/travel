@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+<title>🇺🇸 美國 33 天旅遊手冊</title>
+<style>
+:root{
+  --navy:#1B2A4A;--coral:#E8714A;--sky:#4A8FD9;--gold:#F5C842;
+  --green:#3A8C6E;--pink:#D94A7A;--purple:#8A4AC4;
+  --white:#fff;--offwhite:#F5F8FF;--light:#EEF4FF;
+  --muted:#7A8BA0;--dark:#111B2E;--card:#fff;--border:#D8E4F5;--bg:#F0F4FF;
+  --font-display:'Georgia','Times New Roman',serif;
+  --font-body:-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:var(--font-body);background:var(--bg);color:var(--navy);min-height:100vh;padding-bottom:60px}
+
+/* Header */
+.header{background:linear-gradient(135deg,var(--navy),#243B6E);padding:18px 16px 14px;position:sticky;top:0;z-index:100;box-shadow:0 4px 20px rgba(27,42,74,.35)}
+.header-top{display:flex;align-items:center;gap:10px}
+.header-flag{font-size:28px}
+.header h1{font-family:var(--font-display);font-size:18px;color:#fff;line-height:1.2}
+.header-sub{font-size:10px;color:#AABCD0;margin-top:2px}
+.header-flex{flex:1;min-width:0}
+.lang-btn{flex-shrink:0;padding:5px 12px;border-radius:18px;border:1.5px solid rgba(255,255,255,.35);background:rgba(255,255,255,.12);color:#fff;font-size:11px;font-weight:700;cursor:pointer;font-family:var(--font-body);letter-spacing:.5px}
+.lang-btn.en-active{background:var(--coral);border-color:var(--coral)}
+.tabs{display:flex;gap:0;background:rgba(255,255,255,.08);border-radius:11px;margin-top:12px;overflow:hidden}
+.tab{flex:1;padding:8px 4px;text-align:center;color:rgba(255,255,255,.55);font-size:10.5px;font-weight:500;cursor:pointer;border-radius:9px;user-select:none}
+.tab.active{background:var(--coral);color:#fff;font-weight:600}
+.tab-icon{font-size:14px;display:block;margin-bottom:1px}
+
+/* Lang */
+body.lang-en .zh{display:none!important}
+body.lang-en .en{display:inline!important}
+body.lang-zh .en{display:none!important}
+body.lang-zh .zh{display:inline!important}
+body.lang-en .en.b{display:block!important}
+body.lang-zh .zh.b{display:block!important}
+
+/* Page */
+.page{display:none;padding:14px}
+.page.active{display:block}
+
+/* Flight cards */
+.flight-row{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+.flight-card{border-radius:14px;padding:12px 14px;color:#fff}
+.flight-out{background:linear-gradient(135deg,#1B2A4A,#2A4A7A)}
+.flight-back{background:linear-gradient(135deg,#3A1A0A,#7A3A1A)}
+.flight-label{font-size:10px;font-weight:700;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.flight-route{display:flex;align-items:center;gap:6px}
+.flight-airport{flex-shrink:0}
+.flight-code{font-family:var(--font-display);font-size:20px;font-weight:700}
+.flight-time{font-size:16px;font-weight:700;color:var(--gold)}
+.flight-terminal{font-size:9.5px;color:rgba(255,255,255,.5);margin-top:1px}
+.flight-mid{flex:1;text-align:center;font-size:10px;color:rgba(255,255,255,.7)}
+.flight-mid div:first-child{font-weight:600}
+.flight-line{font-size:11px;color:rgba(255,255,255,.3);letter-spacing:-1px;margin:1px 0}
+
+/* Hero card (start date / total days) */
+.hero{background:linear-gradient(135deg,var(--navy),#243B6E);border-radius:16px;padding:14px 16px;margin-bottom:10px}
+.hero-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.hero-label{font-size:10px;color:#AABCD0;font-weight:600;text-transform:uppercase;letter-spacing:.8px}
+.hero-date{background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.25);border-radius:10px;padding:7px 11px;font-size:14px;color:#fff;font-family:var(--font-body);outline:none;-webkit-appearance:none;flex:1;min-width:130px}
+.hero-date::-webkit-calendar-picker-indicator{filter:invert(1);opacity:.7}
+.hero-stats{display:flex;gap:14px;margin-top:10px;color:#fff}
+.hero-stat{display:flex;flex-direction:column;gap:0px}
+.hero-stat-num{font-size:20px;font-weight:700;color:var(--gold);font-family:var(--font-display)}
+.hero-stat-lbl{font-size:9.5px;color:#AABCD0}
+.hero-progress{height:5px;background:rgba(255,255,255,.15);border-radius:5px;overflow:hidden;margin-top:10px}
+.hero-progress-fill{height:100%;background:linear-gradient(90deg,var(--coral),var(--gold));border-radius:5px;transition:width .5s}
+
+/* City Card */
+.city-card{margin-bottom:10px;background:var(--card);border-radius:16px;overflow:hidden;box-shadow:0 2px 10px rgba(27,42,74,.06);border:1px solid var(--border)}
+.city-hdr{display:flex;align-items:center;gap:10px;padding:13px 14px;cursor:pointer;color:#fff;position:relative}
+.city-emoji{font-size:28px;flex-shrink:0}
+.city-info{flex:1;min-width:0}
+.city-name{font-family:var(--font-display);font-size:17px;font-weight:700}
+.city-dates{font-size:11px;opacity:.85;margin-top:2px}
+.city-days-ctrl{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.18);border-radius:10px;padding:4px 6px;flex-shrink:0}
+.day-btn{width:22px;height:22px;border-radius:6px;border:none;background:rgba(255,255,255,.22);color:#fff;font-size:13px;cursor:pointer;font-weight:700;line-height:1;display:flex;align-items:center;justify-content:center}
+.day-btn:active{background:rgba(255,255,255,.35)}
+.day-num{font-size:14px;font-weight:700;min-width:22px;text-align:center;color:#fff}
+.day-lbl{font-size:9px;opacity:.7;margin-left:1px}
+.city-ctrls{display:flex;flex-direction:column;gap:3px;flex-shrink:0;margin-left:6px}
+.city-arr{width:22px;height:18px;border-radius:5px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.1);color:#fff;font-size:9px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.city-toggle{color:rgba(255,255,255,.6);font-size:14px;margin-left:6px;transition:transform .3s;flex-shrink:0}
+.city-card.open .city-toggle{transform:rotate(180deg)}
+.city-content{display:none;padding:10px 12px 14px;background:var(--offwhite)}
+.city-card.open .city-content{display:block}
+.city-progress{font-size:10px;color:rgba(255,255,255,.85);background:rgba(0,0,0,.2);padding:2px 7px;border-radius:10px;display:inline-block;margin-top:3px}
+
+/* City color gradients */
+.bg-nyc{background:linear-gradient(135deg,#1B2A4A,#3A4D7A)}
+.bg-sf{background:linear-gradient(135deg,#1A3D6E,#2A5A9E)}
+.bg-yos{background:linear-gradient(135deg,#2A5A30,#3A8C3E)}
+.bg-la{background:linear-gradient(135deg,#7A2A1A,#C84A28)}
+.bg-lv{background:linear-gradient(135deg,#3A2A00,#6A5000)}
+.bg-ant{background:linear-gradient(135deg,#5C2A00,#9A4A1A)}
+.bg-gc{background:linear-gradient(135deg,#2A1A08,#5A3A15)}
+.bg-cust{background:linear-gradient(135deg,#3A2A4A,#5A4A7A)}
+
+/* Hotel block */
+.hotel-blk{background:#fff;border-radius:12px;padding:11px 12px;margin-bottom:8px;border:1px solid var(--border);display:flex;gap:10px;align-items:center}
+.hotel-blk-icon{font-size:22px}
+.hotel-blk-info{flex:1;min-width:0}
+.hotel-blk-name{font-size:12.5px;font-weight:600;color:var(--navy)}
+.hotel-blk-detail{font-size:10.5px;color:var(--muted);margin-top:2px;line-height:1.45}
+.hotel-blk-price{font-size:11px;font-weight:700;color:var(--coral);text-align:right;flex-shrink:0}
+.hotel-edit{padding:5px 8px;background:var(--light);border:none;border-radius:7px;font-size:11px;cursor:pointer;color:var(--sky);font-weight:600;margin-left:6px}
+
+/* Section title */
+.sec-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);padding:10px 0 5px;display:flex;align-items:center;gap:5px}
+.sec-count{background:var(--light);color:var(--sky);font-size:9px;padding:1px 6px;border-radius:9px;font-weight:600}
+
+/* Place item */
+.place{display:flex;align-items:flex-start;gap:8px;background:#fff;border-radius:11px;padding:10px 11px;margin-bottom:6px;border:1px solid var(--border)}
+.place.cust{border-style:dashed;background:#FAFCFF}
+.place.done{opacity:.55}
+.chk{width:20px;height:20px;border-radius:50%;border:2px solid var(--border);flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:10px;margin-top:1px}
+.chk.done{background:var(--green);border-color:var(--green);color:#fff}
+.place-info{flex:1;min-width:0}
+.place-name{font-size:12.5px;font-weight:600;color:var(--navy)}
+.place-detail{font-size:10.5px;color:var(--muted);margin-top:2px;line-height:1.5}
+.tags{display:flex;gap:4px;flex-wrap:wrap;margin-top:4px}
+.tag{font-size:9.5px;padding:1px 6px;border-radius:18px;font-weight:500}
+.tf{background:#E8FFF4;color:#2A7A54}
+.tw{background:#FFF3E0;color:#B8600A}
+.ts{background:#FFF8E0;color:#9A7000}
+.tc{background:#FFE8F5;color:#A0006A}
+
+/* Pronunciation */
+.pron-wrap{display:flex;align-items:center;gap:5px;margin-top:4px;flex-wrap:wrap}
+.pron-chip{display:inline-flex;align-items:center;gap:3px;background:var(--light);border-radius:18px;padding:2px 8px;font-size:10px;color:var(--sky);font-weight:500;font-style:italic}
+.speak-btn{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--sky);border:none;cursor:pointer;font-size:12px;flex-shrink:0;color:#fff}
+.speak-btn:active{transform:scale(.9)}
+.speak-btn.speaking{background:var(--coral);animation:pulse .6s infinite alternate}
+@keyframes pulse{from{box-shadow:0 0 0 rgba(232,113,74,.3)}to{box-shadow:0 0 0 8px rgba(232,113,74,0)}}
+
+/* Place actions */
+.place-actions{display:flex;flex-direction:column;gap:3px;flex-shrink:0}
+.iconbtn{width:30px;height:30px;border-radius:8px;border:none;cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center;color:#fff}
+.ib-map{background:var(--sky)}
+.ib-link{background:var(--purple)}
+.ib-edit{background:var(--gold);color:#5a4400}
+.ib-del{background:#FFE8E8;color:#CC3333}
+
+/* Add buttons */
+.add-place-btn{display:flex;align-items:center;justify-content:center;gap:5px;width:100%;padding:9px 12px;margin-top:5px;border-radius:11px;background:transparent;color:var(--sky);border:1.5px dashed rgba(74,143,217,.4);font-size:12px;font-weight:600;cursor:pointer;font-family:var(--font-body)}
+.add-place-btn:active{background:var(--light)}
+
+/* Modal */
+.modal-bg{position:fixed;inset:0;background:rgba(10,20,40,.55);z-index:200;display:none;align-items:flex-end;justify-content:center;backdrop-filter:blur(3px)}
+.modal-bg.show{display:flex}
+.modal{background:#fff;border-radius:18px 18px 0 0;padding:18px;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;animation:slideUp .25s ease}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.modal h3{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:12px}
+.m-label{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin:9px 0 4px}
+.m-input{width:100%;padding:10px 12px;border-radius:10px;border:1.5px solid var(--border);font-size:13px;font-family:var(--font-body);color:var(--navy);background:var(--offwhite);outline:none}
+.m-input:focus{border-color:var(--coral)}
+.type-grid{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:3px}
+.type-btn{padding:5px 10px;border-radius:18px;border:1.5px solid var(--border);background:#fff;font-size:11px;font-weight:500;cursor:pointer;color:var(--navy);font-family:var(--font-body)}
+.type-btn.sel{background:var(--navy);color:#fff;border-color:var(--navy)}
+.m-actions{display:flex;gap:7px;margin-top:14px}
+.m-save{flex:2;padding:11px;border-radius:11px;background:var(--coral);color:#fff;border:none;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font-body)}
+.m-cancel{flex:1;padding:11px;border-radius:11px;background:var(--light);color:var(--navy);border:none;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font-body)}
+
+/* Add city button */
+.add-city-btn{width:100%;padding:12px;border-radius:13px;background:transparent;color:var(--sky);border:2px dashed var(--sky);font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font-body);margin:6px 0}
+
+/* Budget */
+.budget-summary{background:linear-gradient(135deg,var(--navy),#243B6E);border-radius:18px;padding:18px;margin-bottom:12px;color:#fff;position:relative;overflow:hidden}
+.b-label{font-size:11px;color:#AABCD0}
+.b-total{font-family:var(--font-display);font-size:38px;margin:3px 0;color:#fff}
+.b-twd{font-size:12px;color:var(--gold)}
+.b-bars{display:flex;gap:5px;margin-top:12px}
+.b-bar{flex:1;text-align:center}
+.b-bar-trk{height:4px;background:rgba(255,255,255,.12);border-radius:4px;overflow:hidden;margin:3px 0}
+.b-bar-fill{height:100%;border-radius:4px;transition:width .5s}
+.b-bar-lbl{font-size:8.5px;color:#AABCD0}
+.b-bar-amt{font-size:9.5px;font-weight:600}
+.cat-grid{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px}
+.cat-card{flex:1;min-width:65px;background:#fff;border-radius:11px;padding:9px 5px;text-align:center;border:1.5px solid var(--border);cursor:pointer}
+.cat-card.sel{border-color:var(--coral);background:#FFF0EB}
+.cat-icon{font-size:18px}
+.cat-nm{font-size:9.5px;font-weight:600;color:var(--navy)}
+.cat-tot{font-size:10px;font-weight:700;color:var(--coral);margin-top:1px}
+.add-form{background:#fff;border-radius:16px;padding:15px;border:1px solid var(--border);margin-bottom:12px}
+.add-form h3{font-size:13px;font-weight:600;margin-bottom:10px}
+.inp-row{display:flex;gap:7px;margin-bottom:8px}
+.ei{flex:1;padding:10px 11px;border-radius:10px;border:1.5px solid var(--border);font-size:12px;font-family:var(--font-body);color:var(--navy);background:var(--offwhite);outline:none}
+.ei:focus{border-color:var(--coral)}
+.csel{padding:10px 7px;border-radius:10px;border:1.5px solid var(--border);font-size:11px;font-family:var(--font-body);background:var(--offwhite);color:var(--navy);outline:none}
+.add-btn{width:100%;padding:12px;border-radius:12px;background:var(--coral);color:#fff;border:none;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font-body);box-shadow:0 4px 12px rgba(232,113,74,.4)}
+.add-btn:active{transform:scale(.98)}
+.exp-item{display:flex;align-items:center;gap:8px;background:#fff;border-radius:10px;padding:10px 11px;margin-bottom:6px;border:1px solid var(--border)}
+.exp-cat-ic{font-size:20px}
+.exp-info{flex:1;min-width:0}
+.exp-desc{font-size:12px;font-weight:600;color:var(--navy)}
+.exp-meta{font-size:9.5px;color:var(--muted);margin-top:1px}
+.exp-amt{font-size:13px;font-weight:700;color:var(--navy);text-align:right}
+.exp-usd{font-size:9px;color:var(--muted);display:block}
+.del-btn{width:24px;height:24px;border-radius:6px;background:#FFE8E8;color:#CC3333;border:none;font-size:11px;cursor:pointer}
+
+/* Notes */
+.alert{background:#FFF3E0;border-radius:11px;padding:9px 11px;margin:6px 0;display:flex;gap:6px;align-items:flex-start;border-left:3px solid #F5A050}
+.alert-txt{font-size:11px;color:#7A4500;line-height:1.5}
+.note-box{background:#fff;border-radius:14px;padding:14px;border:1px solid var(--border);margin-top:10px}
+.note-box h3{font-size:13px;font-weight:600;margin-bottom:8px}
+.note-ta{width:100%;height:90px;padding:10px;border-radius:10px;border:1.5px solid var(--border);font-size:12px;resize:none;font-family:var(--font-body);color:var(--navy);background:var(--offwhite);outline:none;line-height:1.6}
+.note-save{margin-top:7px;padding:8px 16px;border-radius:8px;background:var(--sky);color:#fff;border:none;font-size:12px;font-weight:600;cursor:pointer;font-family:var(--font-body)}
+
+/* Backup */
+.bk-box{background:#fff;border-radius:14px;padding:14px;border:1px solid var(--border);margin-top:10px}
+.bk-box h3{font-size:13px;font-weight:600;margin-bottom:3px}
+.bk-desc{font-size:11px;color:var(--muted);margin-bottom:9px;line-height:1.5}
+.bk-btns{display:flex;gap:7px;flex-wrap:wrap}
+.bk-btn{flex:1;min-width:120px;padding:10px;border-radius:10px;font-size:12px;font-weight:600;cursor:pointer;font-family:var(--font-body);border:none}
+.bk-export{background:var(--navy);color:#fff}
+.bk-import{background:var(--light);color:var(--navy);text-align:center}
+.bk-clear{background:#FFE8E8;color:#CC3333;width:100%;flex:none;margin-top:8px}
+.bk-msg{font-size:10.5px;color:var(--green);margin-top:6px;font-weight:600}
+
+.empty{text-align:center;padding:30px 16px;color:var(--muted);font-size:12px}
+.empty-ic{font-size:38px;margin-bottom:8px;display:block}
+
+/* Currency Settings */
+.rates-box{background:#fff;border-radius:14px;border:1px solid var(--border);margin-bottom:12px;overflow:hidden}
+.rates-summary{padding:12px 14px;font-size:13px;cursor:pointer;list-style:none;display:flex;align-items:center;gap:6px;color:var(--navy)}
+.rates-summary::-webkit-details-marker{display:none}
+.rates-summary::before{content:'▶';font-size:9px;color:var(--muted);transition:transform .2s;margin-right:3px}
+details[open] .rates-summary::before{transform:rotate(90deg)}
+.rates-base-display{margin-left:auto;font-size:11px;color:var(--coral);font-weight:600}
+.rates-body{padding:0 14px 14px;border-top:1px solid var(--border)}
+.rates-hint{font-size:11px;color:var(--muted);padding:8px 0;line-height:1.5}
+.rate-item{display:flex;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid var(--border)}
+.rate-item:last-child{border-bottom:none}
+.rate-item.rate-base{background:linear-gradient(90deg,rgba(232,113,74,.06),transparent);margin:0 -14px;padding:9px 14px;border-radius:9px}
+.rate-info{flex:1;min-width:0}
+.rate-name{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:12.5px;color:var(--navy)}
+.rate-name strong{font-size:13px}
+.rate-fullname{color:var(--muted);font-size:10.5px}
+.rate-badge{background:var(--coral);color:#fff;font-size:9px;padding:1px 6px;border-radius:8px;font-weight:700;letter-spacing:.5px}
+.rate-formula{font-size:11px;color:var(--muted);margin-top:3px;display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.rate-input{width:90px;padding:4px 7px;border-radius:6px;border:1.5px solid var(--border);font-size:11.5px;background:var(--offwhite);color:var(--navy);outline:none;font-family:var(--font-body)}
+.rate-input:focus{border-color:var(--coral)}
+.rate-input:disabled{background:var(--light);color:var(--muted)}
+.rate-actions{display:flex;gap:4px;flex-shrink:0}
+
+/* City edit button */
+.city-edit-btn{background:rgba(255,255,255,.18);border:none;color:#fff;width:24px;height:24px;border-radius:6px;cursor:pointer;font-size:11px;flex-shrink:0;margin-left:4px}
+</style>
+</head>
+<body class="lang-zh">
+<div class="header">
+  <div class="header-top">
+    <div class="header-flag">🇺🇸</div>
+    <div class="header-flex">
+      <h1><span class="zh">美國 33 天旅遊手冊</span><span class="en">USA 33-Day Travel Guide</span></h1>
+      <div class="header-sub"><span class="zh">✈️ 5/18 出發 · 6/21 凌晨返台 · 🎂 6/11 LA 生日</span><span class="en">✈️ Depart 5/18 · Return 6/21 · 🎂 Birthday in LA 6/11</span></div>
+    </div>
+    <button class="lang-btn" id="lang-btn" onclick="toggleLang()">EN</button>
+  </div>
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('trip',this)"><span class="tab-icon">🗺️</span><span class="zh">行程</span><span class="en">Trip</span></div>
+    <div class="tab" onclick="switchTab('budget',this)"><span class="tab-icon">💰</span><span class="zh">記帳</span><span class="en">Budget</span></div>
+    <div class="tab" onclick="switchTab('notes',this)"><span class="tab-icon">📝</span><span class="zh">筆記</span><span class="en">Notes</span></div>
+  </div>
+</div>
+
+<!-- ════════════ TRIP PAGE (merged) ════════════ -->
+<div class="page active" id="page-trip">
+
+  <!-- Flights -->
+  <div class="flight-row" id="flight-row"></div>
+
+  <!-- Hero: start date + total -->
+  <div class="hero">
+    <div class="hero-row">
+      <span class="hero-label"><span class="zh">出發日</span><span class="en">Start Date</span></span>
+      <input type="date" class="hero-date" id="start-date" oninput="setStartDate(this.value)"/>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-num" id="stat-days">—</div><div class="hero-stat-lbl"><span class="zh">總天數</span><span class="en">Total Nights</span></div></div>
+      <div class="hero-stat"><div class="hero-stat-num" id="stat-end">—</div><div class="hero-stat-lbl"><span class="zh">結束日</span><span class="en">End Date</span></div></div>
+      <div class="hero-stat"><div class="hero-stat-num" id="stat-visited">0</div><div class="hero-stat-lbl"><span class="zh">已去過</span><span class="en">Visited</span></div></div>
+    </div>
+    <div class="hero-progress"><div class="hero-progress-fill" id="prog-fill" style="width:0%"></div></div>
+  </div>
+
+  <!-- City list (rendered by JS) -->
+  <div id="city-list"></div>
+
+  <button class="add-city-btn" onclick="openAddCity()">＋ <span class="zh">新增大城市 / 區域</span><span class="en">Add City / Area</span></button>
+</div>
+
+<!-- ════════════ BUDGET ════════════ -->
+<div class="page" id="page-budget">
+  <div class="budget-summary">
+    <div class="b-label"><span class="zh">旅途總花費</span><span class="en">Total Spent</span></div>
+    <div class="b-total" id="b-total">$0</div>
+    <div class="b-twd" id="b-twd">≈ NT$0</div>
+    <div class="b-bars">
+      <div class="b-bar"><div class="b-bar-amt" id="ba-food">$0</div><div class="b-bar-trk"><div class="b-bar-fill" id="bf-food" style="width:0%;background:#E8714A"></div></div><div class="b-bar-lbl">🍜</div></div>
+      <div class="b-bar"><div class="b-bar-amt" id="ba-trans">$0</div><div class="b-bar-trk"><div class="b-bar-fill" id="bf-trans" style="width:0%;background:#4A8FD9"></div></div><div class="b-bar-lbl">🚇</div></div>
+      <div class="b-bar"><div class="b-bar-amt" id="ba-hotel">$0</div><div class="b-bar-trk"><div class="b-bar-fill" id="bf-hotel" style="width:0%;background:#3A8C6E"></div></div><div class="b-bar-lbl">🏨</div></div>
+      <div class="b-bar"><div class="b-bar-amt" id="ba-show">$0</div><div class="b-bar-trk"><div class="b-bar-fill" id="bf-show" style="width:0%;background:#D94A7A"></div></div><div class="b-bar-lbl">🎭</div></div>
+      <div class="b-bar"><div class="b-bar-amt" id="ba-shop">$0</div><div class="b-bar-trk"><div class="b-bar-fill" id="bf-shop" style="width:0%;background:#F5C842"></div></div><div class="b-bar-lbl">🛍️</div></div>
+      <div class="b-bar"><div class="b-bar-amt" id="ba-other">$0</div><div class="b-bar-trk"><div class="b-bar-fill" id="bf-other" style="width:0%;background:#7A8BA0"></div></div><div class="b-bar-lbl">📌</div></div>
+    </div>
+  </div>
+  <div class="add-form">
+    <h3>➕ <span class="zh">新增費用</span><span class="en">Add Expense</span></h3>
+    <div class="cat-grid" id="cat-sel">
+      <div class="cat-card sel" onclick="selCat(this,'food')"><div class="cat-icon">🍜</div><div class="cat-nm"><span class="zh">餐飲</span><span class="en">Food</span></div><div class="cat-tot" id="ct-food">$0</div></div>
+      <div class="cat-card" onclick="selCat(this,'trans')"><div class="cat-icon">🚇</div><div class="cat-nm"><span class="zh">交通</span><span class="en">Transit</span></div><div class="cat-tot" id="ct-trans">$0</div></div>
+      <div class="cat-card" onclick="selCat(this,'hotel')"><div class="cat-icon">🏨</div><div class="cat-nm"><span class="zh">住宿</span><span class="en">Hotel</span></div><div class="cat-tot" id="ct-hotel">$0</div></div>
+      <div class="cat-card" onclick="selCat(this,'show')"><div class="cat-icon">🎭</div><div class="cat-nm"><span class="zh">演出</span><span class="en">Shows</span></div><div class="cat-tot" id="ct-show">$0</div></div>
+      <div class="cat-card" onclick="selCat(this,'shop')"><div class="cat-icon">🛍️</div><div class="cat-nm"><span class="zh">購物</span><span class="en">Shop</span></div><div class="cat-tot" id="ct-shop">$0</div></div>
+      <div class="cat-card" onclick="selCat(this,'other')"><div class="cat-icon">📌</div><div class="cat-nm"><span class="zh">其他</span><span class="en">Other</span></div><div class="cat-tot" id="ct-other">$0</div></div>
+    </div>
+    <div class="inp-row"><input class="ei" id="ei-desc" placeholder="項目 / Item"/></div>
+    <div class="inp-row"><input class="ei" id="ei-amt" type="number" placeholder="金額 / Amount" style="flex:2"/><select class="csel" id="ei-cur"></select></div>
+    <div class="inp-row"><input class="ei" id="ei-city" placeholder="城市 / City"/><input class="ei" id="ei-date" type="date"/></div>
+    <button class="add-btn" onclick="addExp()"><span class="zh">記帳 ＋</span><span class="en">Save Expense ＋</span></button>
+  </div>
+
+  <!-- Currency Settings (collapsible) -->
+  <details class="rates-box">
+    <summary class="rates-summary">
+      💱 <strong><span class="zh">幣值與匯率設定</span><span class="en">Currency &amp; Exchange Rates</span></strong>
+      <span class="rates-base-display" id="rates-base-display"></span>
+    </summary>
+    <div class="rates-body">
+      <div class="rates-hint"><span class="zh">總額會用「主幣值」⭐ 顯示。可自訂匯率、新增其他國家貨幣。</span><span class="en">Totals show in your ⭐ base currency. Customize rates or add new currencies.</span></div>
+      <div id="rates-list"></div>
+      <button class="add-place-btn" onclick="openAddRate()" style="margin-top:6px">＋ <span class="zh">新增其他幣別</span><span class="en">Add Currency</span></button>
+    </div>
+  </details>
+
+  <div id="exp-list"></div>
+</div>
+
+<!-- ════════════ NOTES ════════════ -->
+<div class="page" id="page-notes">
+  <div class="alert" style="border-left-color:var(--navy);background:var(--light)"><span>✈️</span><div class="alert-txt"><strong><span class="zh">機票：</span><span class="en">Flights:</span></strong> EVA BR032 · 5/18 TPE T2 19:10→JFK T1 22:05 ｜ EVA BR031 · 6/21 JFK T1 01:25→TPE T2 6/22 05:15<br><span style="color:var(--coral)"><span class="zh">⚠️ 回程凌晨起飛！6/20 晚 10pm 前到 JFK T1</span><span class="en">⚠️ Return is 1:25am! Be at JFK T1 by 10pm on 6/20</span></span></div></div>
+  <div class="alert"><span>🔴</span><div class="alert-txt"><strong><span class="zh">立刻訂：</span><span class="en">Book NOW:</span></strong> Alcatraz · alcatrazcruises.com ｜ Antelope Canyon · lakepowell.com ｜ Louis Tomlinson 6/11 · Ticketmaster ｜ Adele/Bruno Mars LV</div></div>
+  <div class="alert" style="border-left-color:var(--sky);background:#E8F4FF"><span>🟡</span><div class="alert-txt"><strong><span class="zh">盡快辦：</span><span class="en">Soon:</span></strong> Yosemite Timed Entry · recreation.gov ｜ The Broad LA · thebroad.org</div></div>
+  <div class="alert" style="border-left-color:var(--green);background:#E8FFF4"><span>🟢</span><div class="alert-txt"><strong><span class="zh">出發前：</span><span class="en">Before Trip:</span></strong> ESTA · esta.cbp.dhs.gov ｜ <span class="zh">租車</span><span class="en">Rental car</span> Costco Travel ｜ <span class="zh">旅遊保險</span><span class="en">Travel insurance</span></div></div>
+
+  <div class="note-box">
+    <h3>📝 <span class="zh">我的旅行筆記</span><span class="en">My Notes</span></h3>
+    <textarea class="note-ta" id="n1" placeholder="心得、待辦…/ Thoughts, to-do…"></textarea>
+    <button class="note-save" onclick="saveNote()"><span class="zh">儲存</span><span class="en">Save</span></button>
+  </div>
+
+  <div class="note-box">
+    <h3>🗣️ <span class="zh">實用英文</span><span class="en">Useful English</span></h3>
+    <div style="font-size:11.5px;line-height:2;color:var(--navy)">
+      Can I have the check, please? — <span class="zh">可以結帳嗎？</span><span class="en">Asking for the bill</span><br>
+      How do I get to ___? — <span class="zh">怎麼去___？</span><span class="en">Asking directions</span><br>
+      Could you take a photo for us? — <span class="zh">可以幫我們拍照嗎？</span><span class="en">Asking for a photo</span><br>
+      I lost my wallet / passport. — <span class="zh">我的錢包/護照不見了</span><span class="en">Lost item</span><br>
+      I need a doctor. — <span class="zh">我需要看醫生</span><span class="en">Medical help</span>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <h3>🎭 <span class="zh">百老匯搶票攻略</span><span class="en">Broadway Lottery Guide</span></h3>
+    <div style="font-size:11.5px;line-height:2;color:var(--navy)">
+      <strong>1. Digital Lottery</strong> — TodayTix App, $30–50<br>
+      <strong>2. Rush Tickets</strong> — Same-day morning queue<br>
+      <strong>3. TKTS Booth</strong> — Times Sq, up to 50% off
+    </div>
+  </div>
+
+  <div class="bk-box">
+    <h3>💾 <span class="zh">資料備份 / 還原</span><span class="en">Backup / Restore</span></h3>
+    <div class="bk-desc"><span class="zh">在手機上下載可能會失敗，可改用「複製文字」方式備份。</span><span class="en">Mobile downloads may fail. You can also copy/paste backup text instead.</span></div>
+    <div class="bk-btns">
+      <button class="bk-btn bk-export" onclick="exportData()">📤 <span class="zh">匯出備份</span><span class="en">Export</span></button>
+      <label class="bk-btn bk-import" style="cursor:pointer">📥 <span class="zh">從檔案匯入</span><span class="en">Import File</span><input type="file" accept=".json,application/json,text/plain" style="display:none" onchange="importData(event)"/></label>
+    </div>
+    <div class="bk-btns" style="margin-top:7px">
+      <button class="bk-btn bk-import" onclick="openPasteImport()">📋 <span class="zh">貼上文字還原</span><span class="en">Paste to Restore</span></button>
+    </div>
+    <button class="bk-btn bk-clear" onclick="clearAll()">🗑️ <span class="zh">清除全部資料</span><span class="en">Clear All Data</span></button>
+    <div class="bk-msg" id="bk-msg"></div>
+  </div>
+
+  <div class="bk-box" style="margin-top:10px">
+    <h3>ℹ️ <span class="zh">關於這個手冊</span><span class="en">About This Handbook</span></h3>
+    <div class="bk-desc">
+      <span class="zh">這是一個離線旅遊手冊。所有資料存在你的手機/瀏覽器，不會上傳到任何伺服器。<br>當作公版使用：「清除全部資料」後可重新編輯成你自己的行程。</span>
+      <span class="en">This is an offline travel handbook. All data stays on your device — nothing is uploaded.<br>To use as a template: click "Clear All Data" and edit to make it your own.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════ MODALS ════════════ -->
+<div class="modal-bg" id="modal-place" onclick="if(event.target===this)closeModal('modal-place')">
+  <div class="modal">
+    <h3 id="mp-title"></h3>
+    <div class="m-label"><span class="zh">類型</span><span class="en">Type</span></div>
+    <div class="type-grid" id="mp-types">
+      <button class="type-btn sel" data-emoji="🖼️" onclick="selType(this)">🖼️ <span class="zh">美術館</span><span class="en">Museum</span></button>
+      <button class="type-btn" data-emoji="🍜" onclick="selType(this)">🍜 <span class="zh">餐廳</span><span class="en">Food</span></button>
+      <button class="type-btn" data-emoji="🛍️" onclick="selType(this)">🛍️ <span class="zh">購物</span><span class="en">Shop</span></button>
+      <button class="type-btn" data-emoji="🌿" onclick="selType(this)">🌿 <span class="zh">自然</span><span class="en">Nature</span></button>
+      <button class="type-btn" data-emoji="🚇" onclick="selType(this)">🚇 <span class="zh">交通</span><span class="en">Transit</span></button>
+      <button class="type-btn" data-emoji="🎭" onclick="selType(this)">🎭 <span class="zh">演出</span><span class="en">Show</span></button>
+      <button class="type-btn" data-emoji="🏨" onclick="selType(this)">🏨 <span class="zh">住宿</span><span class="en">Hotel</span></button>
+      <button class="type-btn" data-emoji="📌" onclick="selType(this)">📌 <span class="zh">其他</span><span class="en">Other</span></button>
+    </div>
+    <div class="m-label"><span class="zh">名稱 *</span><span class="en">Name *</span></div>
+    <input class="m-input" id="mp-name"/>
+    <div class="m-label"><span class="zh">說明</span><span class="en">Description</span></div>
+    <input class="m-input" id="mp-detail"/>
+    <div class="m-label"><span class="zh">交通方式（選填）</span><span class="en">Transit info (optional)</span></div>
+    <input class="m-input" id="mp-transit" placeholder="e.g. Take L train to Bedford Ave"/>
+    <div class="m-label"><span class="zh">Google Maps 連結 / 搜尋字</span><span class="en">Google Maps link / search</span></div>
+    <input class="m-input" id="mp-map" placeholder="https://maps.app.goo.gl/... or place name"/>
+    <div class="m-label"><span class="zh">其他連結（官網、訂位等）</span><span class="en">Other link (website, booking)</span></div>
+    <input class="m-input" id="mp-link" placeholder="https://..."/>
+    <div class="m-actions">
+      <button class="m-save" onclick="savePlace()"><span class="zh">儲存</span><span class="en">Save</span></button>
+      <button class="m-cancel" onclick="closeModal('modal-place')"><span class="zh">取消</span><span class="en">Cancel</span></button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="modal-city" onclick="if(event.target===this)closeModal('modal-city')">
+  <div class="modal">
+    <h3><span class="zh">新增城市 / 區域</span><span class="en">Add City / Area</span></h3>
+    <div class="m-label"><span class="zh">中文名稱</span><span class="en">Chinese Name</span></div>
+    <input class="m-input" id="mc-name-zh" placeholder="例：波士頓"/>
+    <div class="m-label"><span class="zh">英文名稱</span><span class="en">English Name</span></div>
+    <input class="m-input" id="mc-name-en" placeholder="e.g. Boston"/>
+    <div style="display:flex;gap:8px;margin-top:8px">
+      <div style="flex:1"><div class="m-label">Emoji</div><input class="m-input" id="mc-emoji" value="🏙️" style="text-align:center"/></div>
+      <div style="flex:1"><div class="m-label"><span class="zh">天數</span><span class="en">Nights</span></div><input class="m-input" id="mc-days" type="number" min="1" value="3"/></div>
+    </div>
+    <div class="m-actions">
+      <button class="m-save" onclick="saveCity()"><span class="zh">加入行程</span><span class="en">Add to Trip</span></button>
+      <button class="m-cancel" onclick="closeModal('modal-city')"><span class="zh">取消</span><span class="en">Cancel</span></button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="modal-hotel" onclick="if(event.target===this)closeModal('modal-hotel')">
+  <div class="modal">
+    <h3>🏨 <span class="zh">編輯住宿</span><span class="en">Edit Accommodation</span></h3>
+    <div class="m-label"><span class="zh">飯店名稱</span><span class="en">Hotel Name</span></div>
+    <input class="m-input" id="mh-name"/>
+    <div class="m-label"><span class="zh">說明 / 評分</span><span class="en">Notes / Rating</span></div>
+    <input class="m-input" id="mh-detail"/>
+    <div class="m-label"><span class="zh">每晚價格</span><span class="en">Price per Night</span></div>
+    <input class="m-input" id="mh-price" placeholder="e.g. $35–50 USD"/>
+    <div class="m-label"><span class="zh">Google Maps 連結</span><span class="en">Google Maps Link</span></div>
+    <input class="m-input" id="mh-map"/>
+    <div class="m-actions">
+      <button class="m-save" onclick="saveHotel()"><span class="zh">儲存</span><span class="en">Save</span></button>
+      <button class="m-cancel" onclick="closeModal('modal-hotel')"><span class="zh">取消</span><span class="en">Cancel</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- City edit modal (separate from add — pre-fills) -->
+<div class="modal-bg" id="modal-city-edit" onclick="if(event.target===this)closeModal('modal-city-edit')">
+  <div class="modal">
+    <h3>✏️ <span class="zh">編輯城市</span><span class="en">Edit City</span></h3>
+    <div class="m-label"><span class="zh">中文名稱</span><span class="en">Chinese Name</span></div>
+    <input class="m-input" id="mce-name-zh"/>
+    <div class="m-label"><span class="zh">英文名稱</span><span class="en">English Name</span></div>
+    <input class="m-input" id="mce-name-en"/>
+    <div class="m-label">Emoji</div>
+    <input class="m-input" id="mce-emoji" style="text-align:center"/>
+    <div class="m-actions">
+      <button class="m-save" onclick="saveCityEdit()"><span class="zh">儲存</span><span class="en">Save</span></button>
+      <button class="m-cancel" onclick="closeModal('modal-city-edit')"><span class="zh">取消</span><span class="en">Cancel</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- Currency add modal -->
+<div class="modal-bg" id="modal-rate" onclick="if(event.target===this)closeModal('modal-rate')">
+  <div class="modal">
+    <h3>💱 <span class="zh">新增幣別</span><span class="en">Add Currency</span></h3>
+    <div class="m-label"><span class="zh">代碼（3 字母，如 SGD）</span><span class="en">Code (3 letters, e.g. SGD)</span></div>
+    <input class="m-input" id="mr-code" placeholder="SGD" maxlength="6" style="text-transform:uppercase"/>
+    <div class="m-label"><span class="zh">符號</span><span class="en">Symbol</span></div>
+    <input class="m-input" id="mr-symbol" placeholder="S$"/>
+    <div class="m-label"><span class="zh">名稱</span><span class="en">Name</span></div>
+    <input class="m-input" id="mr-name" placeholder="新加坡幣 / Singapore Dollar"/>
+    <div class="m-label"><span class="zh">1 USD = ? 此幣別</span><span class="en">1 USD = ? in this currency</span></div>
+    <input class="m-input" id="mr-perusd" type="number" step="0.0001" placeholder="e.g. 1.34"/>
+    <div class="m-actions">
+      <button class="m-save" onclick="saveRate()"><span class="zh">新增</span><span class="en">Add</span></button>
+      <button class="m-cancel" onclick="closeModal('modal-rate')"><span class="zh">取消</span><span class="en">Cancel</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- Copy backup text modal -->
+<div class="modal-bg" id="modal-copy" onclick="if(event.target===this)closeModal('modal-copy')">
+  <div class="modal">
+    <h3 id="copy-title"></h3>
+    <div class="m-label"><span class="zh">複製這段文字保存（例如貼到備忘錄、雲端筆記）</span><span class="en">Copy this text and save it (e.g. to Notes app)</span></div>
+    <textarea id="copy-textarea" class="m-input" style="height:200px;font-family:monospace;font-size:11px" readonly></textarea>
+    <div class="m-actions">
+      <button class="m-save" id="copy-btn" onclick="copyBackupText()">📋 <span class="zh">複製</span><span class="en">Copy</span></button>
+      <button class="m-cancel" onclick="closeModal('modal-copy')"><span class="zh">關閉</span><span class="en">Close</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- Paste import modal -->
+<div class="modal-bg" id="modal-paste" onclick="if(event.target===this)closeModal('modal-paste')">
+  <div class="modal">
+    <h3>📋 <span class="zh">貼上文字還原</span><span class="en">Paste to Restore</span></h3>
+    <div class="m-label"><span class="zh">把先前複製的備份文字貼在這裡</span><span class="en">Paste the previously copied backup text here</span></div>
+    <textarea id="paste-textarea" class="m-input" style="height:200px;font-family:monospace;font-size:11px" placeholder="{...}"></textarea>
+    <div class="m-actions">
+      <button class="m-save" onclick="importPasted()"><span class="zh">還原</span><span class="en">Restore</span></button>
+      <button class="m-cancel" onclick="closeModal('modal-paste')"><span class="zh">取消</span><span class="en">Cancel</span></button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════════ DATA MODEL ═══════════════
+// Multi-currency: store all expenses in USD internally; user picks display currency
+const DEFAULT_RATES = {
+  USD: { code:'USD', symbol:'$',     name_zh:'美金',     name_en:'US Dollar',     toUSD: 1 },
+  TWD: { code:'TWD', symbol:'NT$',   name_zh:'台幣',     name_en:'TWD',           toUSD: 1/32 },
+  JPY: { code:'JPY', symbol:'¥',     name_zh:'日圓',     name_en:'Japanese Yen',  toUSD: 1/150 },
+  EUR: { code:'EUR', symbol:'€',     name_zh:'歐元',     name_en:'Euro',          toUSD: 1.08 },
+  GBP: { code:'GBP', symbol:'£',     name_zh:'英鎊',     name_en:'British Pound', toUSD: 1.27 },
+  KRW: { code:'KRW', symbol:'₩',     name_zh:'韓元',     name_en:'Korean Won',    toUSD: 1/1350 },
+  HKD: { code:'HKD', symbol:'HK$',   name_zh:'港幣',     name_en:'Hong Kong $',   toUSD: 1/7.8 },
+  CNY: { code:'CNY', symbol:'¥',     name_zh:'人民幣',   name_en:'Chinese Yuan',  toUSD: 1/7.2 },
+  THB: { code:'THB', symbol:'฿',     name_zh:'泰銖',     name_en:'Thai Baht',     toUSD: 1/35 },
+};
+// Legacy migration done above
+
+// Default trip data — used as template, can be edited freely
+const DEFAULT_TRIP = {
+  flights: [
+    { kind:'out', label_zh:'去程 ✈️ 出發', label_en:'OUTBOUND ✈️ DEPART',
+      from:'TPE', from_t:'19:10', from_terminal:'T2 · 5/18 (一)', from_terminal_en:'T2 · Mon 5/18',
+      to:'JFK', to_t:'22:05', to_terminal:'T1 · 5/18 (一)', to_terminal_en:'T1 · Mon 5/18',
+      airline:'長榮 BR 032 · EVA BR 032', duration:'14h 55min', plane:'777-300ER' },
+    { kind:'back', label_zh:'回程 ✈️ 返台', label_en:'RETURN ✈️ BACK',
+      from:'JFK', from_t:'01:25', from_terminal:'T1 · 6/21 (日)', from_terminal_en:'T1 · Sun 6/21',
+      to:'TPE', to_t:'05:15+1', to_terminal:'T2 · 6/22 (一)', to_terminal_en:'T2 · Mon 6/22',
+      airline:'長榮 BR 031 · EVA BR 031', duration:'15h 50min', plane:'777-300ER' },
+  ],
+  startDate: '2026-05-18',
+  cities: [
+    { id:'nyc', emoji:'🗽', name_zh:'紐約 NYC', name_en:'New York', bg:'bg-nyc', days:7,
+      hotel: { name:'自行安排', name_en:'Book your own', detail:'', price:'', map:'' },
+      places: [
+        { id:'nyc-met', emoji:'🖼️', name_zh:'The Metropolitan Museum', name_en:'The Met',
+          detail_zh:'世界頂級博物館，埃及展廳令人窒息', detail_en:'World-class museum, Egyptian wing is breathtaking',
+          phonetic:'meh-truh-POL-ih-tun', speak:'The Metropolitan Museum of Art',
+          tags:['⭐4.8'], map:'The Metropolitan Museum of Art New York', link:'https://www.metmuseum.org' },
+        { id:'nyc-moma', emoji:'🖼️', name_zh:'MoMA', name_en:'MoMA',
+          detail_zh:'梵谷星夜在此！週五至 8:30pm', detail_en:"Van Gogh's Starry Night is here! Open late Fri",
+          phonetic:'MOH-mah', speak:'MoMA Museum of Modern Art',
+          tags:['⭐4.6'], map:'MoMA New York', link:'https://www.moma.org' },
+        { id:'nyc-whitney', emoji:'🖼️', name_zh:'Whitney Museum', name_en:'Whitney Museum',
+          detail_zh:'美國當代藝術，週五夜免費', detail_en:'American contemporary art, free Fri evenings',
+          phonetic:'WIT-nee', speak:'Whitney Museum of American Art',
+          tags:['⭐4.5','tf:週五免費:Free Fri'], map:'Whitney Museum New York', link:'https://whitney.org' },
+        { id:'nyc-guggenheim', emoji:'🖼️', name_zh:'Guggenheim', name_en:'Guggenheim',
+          detail_zh:'螺旋建築本身就是藝術', detail_en:'The spiral building itself is the art',
+          phonetic:'GOO-gen-hyme', speak:'The Guggenheim Museum',
+          tags:['⭐4.3'], map:'Guggenheim Museum New York', link:'https://www.guggenheim.org' },
+        { id:'nyc-ebreo', emoji:'🛍️', name_zh:'Ebreo Vintage', name_en:'Ebreo Vintage',
+          detail_zh:'Williamsburg 最高評分古著，L 線 Bedford Ave', detail_en:'Top vintage shop in Williamsburg, L train Bedford Ave',
+          phonetic:'EH-breh-oh VIN-tij', speak:'Ebreo Vintage Williamsburg',
+          tags:['⭐4.9'], map:'Ebreo Vintage Williamsburg', link:'' },
+        { id:'nyc-highline', emoji:'🌿', name_zh:'The High Line', name_en:'The High Line',
+          detail_zh:'空中花園，連接 Whitney', detail_en:'Elevated park, connects to Whitney',
+          phonetic:'thuh HY LYN', speak:'The High Line New York',
+          tags:['tf:免費:Free'], map:'High Line New York', link:'https://www.thehighline.org' },
+      ]
+    },
+    { id:'sf', emoji:'🌁', name_zh:'舊金山 SF', name_en:'San Francisco', bg:'bg-sf', days:7,
+      hotel: { name:'ITH Pacific Tradewinds Hostel', name_en:'ITH Pacific Tradewinds', detail:'⭐4.9 · 唐人街旁，免費早餐 / Chinatown, free breakfast', price:'$35–50', map:'ITH Pacific Tradewinds Hostel San Francisco' },
+      places: [
+        { id:'sf-alcatraz', emoji:'🏝️', name_zh:'惡魔島 Alcatraz', name_en:'Alcatraz Island',
+          detail_zh:'Pier 33 渡輪，必須提前預訂！', detail_en:'Ferry from Pier 33, MUST pre-book!',
+          phonetic:'AL-kuh-traz', speak:'Alcatraz Island',
+          tags:['tw:⚠️ 立刻預訂:⚠️ Book Now'], map:'Alcatraz Island San Francisco', link:'https://www.alcatrazcruises.com' },
+        { id:'sf-sfmoma', emoji:'🖼️', name_zh:'SFMOMA', name_en:'SFMOMA',
+          detail_zh:'週四下午有免費時段', detail_en:'Free Thursday afternoons',
+          phonetic:'es-ef-MOH-mah', speak:'SFMOMA San Francisco',
+          tags:['⭐4.6'], map:'SFMOMA San Francisco', link:'https://www.sfmoma.org' },
+        { id:'sf-deyoung', emoji:'🖼️', name_zh:'de Young Museum', name_en:'de Young Museum',
+          detail_zh:'金門公園內，頂層觀景台免費！', detail_en:'In Golden Gate Park, free observation tower!',
+          phonetic:'duh YUNG', speak:'de Young Museum',
+          tags:['⭐4.6','tf:觀景台免費:Tower Free'], map:'de Young Museum San Francisco', link:'https://www.famsf.org/de-young' },
+        { id:'sf-valencia', emoji:'🛍️', name_zh:'Valencia Street', name_en:'Valencia Street',
+          detail_zh:'Mission 區最有靈魂的街道', detail_en:'Most soulful street in Mission',
+          phonetic:'vuh-LEN-shuh', speak:'Valencia Street San Francisco',
+          tags:[], map:'Valencia Street San Francisco', link:'' },
+        { id:'sf-haight', emoji:'🛍️', name_zh:'Haight-Ashbury', name_en:'Haight-Ashbury',
+          detail_zh:'嬉皮文化發源地', detail_en:'Birthplace of hippie culture',
+          phonetic:'HAYT ASH-beh-ree', speak:'Haight Ashbury San Francisco',
+          tags:[], map:'Haight-Ashbury San Francisco', link:'' },
+        { id:'sf-landsend', emoji:'🌿', name_zh:'Lands End Trail', name_en:'Lands End Trail',
+          detail_zh:'隱藏版海崖步道', detail_en:'Hidden coastal cliff trail',
+          phonetic:'LANDZ end', speak:'Lands End Trail San Francisco',
+          tags:['tf:免費:Free'], map:'Lands End Trail San Francisco', link:'' },
+      ]
+    },
+    { id:'yos', emoji:'🌲', name_zh:'優勝美地', name_en:'Yosemite', bg:'bg-yos', days:2,
+      hotel: { name:'Yosemite Bug Rustic Resort', name_en:'Yosemite Bug Rustic Resort', detail:'⭐4.4 · YARTS 停靠站 / YARTS bus stop', price:'$35–55', map:'Yosemite Bug Rustic Mountain Resort' },
+      places: [
+        { id:'yos-tunnel', emoji:'🌿', name_zh:'Tunnel View', name_en:'Tunnel View',
+          detail_zh:'下車就能看到 Half Dome 全景', detail_en:'Half Dome panorama, classic spot',
+          phonetic:'TUN-ul vyoo', speak:'Tunnel View Yosemite',
+          tags:['tf:免費:Free'], map:'Tunnel View Yosemite', link:'' },
+        { id:'yos-mirror', emoji:'🌿', name_zh:'Mirror Lake', name_en:'Mirror Lake',
+          detail_zh:'5km 環形步道，倒影如鏡', detail_en:'5km loop, mirror reflections',
+          phonetic:'MIR-er layk', speak:'Mirror Lake Yosemite',
+          tags:[], map:'Mirror Lake Yosemite', link:'' },
+        { id:'yos-vernal', emoji:'🌿', name_zh:'Vernal Falls', name_en:'Vernal Falls',
+          detail_zh:'壯觀瀑布，來回 3h', detail_en:'Spectacular waterfall, 3h round trip',
+          phonetic:'VER-nl fawlz', speak:'Vernal Falls Yosemite',
+          tags:[], map:'Vernal Falls Yosemite', link:'' },
+      ]
+    },
+    { id:'la', emoji:'🌴', name_zh:'洛杉磯 LA 🎂', name_en:'Los Angeles 🎂', bg:'bg-la', days:9,
+      hotel: { name:'HI Santa Monica Hostel', name_en:'HI Santa Monica Hostel', detail:'⭐4.4 · 距海灘 5 分鐘 / 5 min to beach', price:'$40–55', map:'HI Santa Monica Hostel' },
+      places: [
+        { id:'la-getty', emoji:'🖼️', name_zh:'The Getty Center', name_en:'The Getty Center',
+          detail_zh:'山丘上白色建築，俯瞰整個 LA', detail_en:'Hilltop white building, panoramic LA views',
+          phonetic:'GET-ee SEN-ter', speak:'The Getty Center',
+          tags:['⭐4.8','tf:免費:Free'], map:'The Getty Center Los Angeles', link:'https://www.getty.edu' },
+        { id:'la-broad', emoji:'🖼️', name_zh:'The Broad', name_en:'The Broad',
+          detail_zh:'Basquiat、Warhol、Murakami，需預約', detail_en:'Basquiat, Warhol, Murakami — book first',
+          phonetic:'thuh BRAWD', speak:'The Broad Museum',
+          tags:['⭐4.7','tf:免費需預約:Free w/ Booking'], map:'The Broad Museum Los Angeles', link:'https://www.thebroad.org' },
+        { id:'la-lacma', emoji:'🖼️', name_zh:'LACMA', name_en:'LACMA',
+          detail_zh:'Urban Light 路燈裝置必打卡', detail_en:'Urban Light installation, iconic photo',
+          phonetic:'LAK-mah', speak:'LACMA Los Angeles',
+          tags:['⭐4.6'], map:'LACMA Los Angeles', link:'https://www.lacma.org' },
+        { id:'la-abbot', emoji:'🛍️', name_zh:'Abbot Kinney Blvd', name_en:'Abbot Kinney Blvd',
+          detail_zh:'《GQ》全美最酷街道', detail_en:"GQ's coolest street in America",
+          phonetic:'AB-ut KIN-ee', speak:'Abbot Kinney Boulevard Venice',
+          tags:[], map:'Abbot Kinney Boulevard Venice', link:'' },
+        { id:'la-silverlake', emoji:'🛍️', name_zh:'Markt LA / Silver Lake', name_en:'Markt LA / Silver Lake',
+          detail_zh:'LA 最讚的精選古著 ⭐5.0', detail_en:"LA's top curated vintage ⭐5.0",
+          phonetic:'SIL-ver layk', speak:'Markt LA Silver Lake',
+          tags:['⭐5.0'], map:'Markt LA Silver Lake', link:'' },
+        { id:'la-griffith', emoji:'🌿', name_zh:'Griffith Observatory', name_en:'Griffith Observatory',
+          detail_zh:'健行 45 分鐘，俯瞰 LA 夜景', detail_en:'45 min hike, best LA night view',
+          phonetic:'GRIF-ith ob-ZUR-vuh-tor-ee', speak:'Griffith Observatory',
+          tags:['⭐4.7','tf:免費:Free'], map:'Griffith Observatory Los Angeles', link:'https://griffithobservatory.org' },
+        { id:'la-louis', emoji:'🎭', name_zh:'Louis Tomlinson @ Kia Forum 🎂', name_en:'Louis Tomlinson @ Kia Forum 🎂',
+          detail_zh:'生日 6/11 演唱會！必搶票', detail_en:'Birthday 6/11 concert! Book now',
+          phonetic:'LOO-ee TOM-lin-sun', speak:'Louis Tomlinson Kia Forum',
+          tags:['tc:🎂 生日:🎂 Bday'], map:'Kia Forum Inglewood', link:'https://www.ticketmaster.com' },
+      ]
+    },
+    { id:'lv', emoji:'🎰', name_zh:'拉斯維加斯', name_en:'Las Vegas', bg:'bg-lv', days:3,
+      hotel: { name:'Excalibur Hotel & Casino', name_en:'Excalibur Hotel & Casino', detail:'⭐4.1 · Strip 最超值 / Best value on Strip', price:'$30–50', map:'Excalibur Hotel Las Vegas' },
+      places: [
+        { id:'lv-adele', emoji:'🎭', name_zh:'Adele @ Caesars Palace', name_en:'Adele @ Caesars Palace',
+          detail_zh:'Vegas 駐場最頂！立刻搶票', detail_en:'Top Vegas residency, book NOW',
+          phonetic:'uh-DEL', speak:'Adele Caesars Palace Las Vegas',
+          tags:['tc:🌟 必看:🌟 Must See'], map:'Caesars Palace Las Vegas', link:'https://www.ticketmaster.com' },
+        { id:'lv-absinthe', emoji:'🎭', name_zh:'Absinthe @ Caesars Palace', name_en:'Absinthe @ Caesars Palace',
+          detail_zh:'成人卡巴萊+雜技，物超所值', detail_en:'Adult cabaret + acrobatics, best value',
+          phonetic:'AB-sinth', speak:'Absinthe Caesars Palace',
+          tags:[], map:'Absinthe Caesars Palace', link:'' },
+        { id:'lv-redrock', emoji:'🌿', name_zh:'Red Rock Canyon', name_en:'Red Rock Canyon',
+          detail_zh:'Strip 20 分鐘，朱紅砂岩', detail_en:'20 min from Strip, red sandstone',
+          phonetic:'red rok KAN-yen', speak:'Red Rock Canyon Las Vegas',
+          tags:[], map:'Red Rock Canyon Las Vegas', link:'' },
+        { id:'lv-neon', emoji:'🛍️', name_zh:'Neon Museum', name_en:'Neon Museum',
+          detail_zh:'霓虹燈博物館，夜間最美', detail_en:'Neon sign museum, magical at night',
+          phonetic:'NEE-on', speak:'Neon Museum Las Vegas',
+          tags:[], map:'Neon Museum Las Vegas', link:'https://www.neonmuseum.org' },
+      ]
+    },
+    { id:'ant', emoji:'🌊', name_zh:'羚羊谷 + 馬蹄灣', name_en:'Antelope Canyon', bg:'bg-ant', days:2,
+      hotel: { name:'Desert Canyon Inn', name_en:'Desert Canyon Inn', detail:'⭐4.5 · 步行可達羚羊谷 / Walking distance', price:'$70–90', map:'Desert Canyon Inn Page Arizona' },
+      places: [
+        { id:'ant-upper', emoji:'🌊', name_zh:'Upper Antelope Canyon', name_en:'Upper Antelope Canyon',
+          detail_zh:'光柱奇景！必須報團', detail_en:'Light beams! Tour required',
+          phonetic:'AN-tuh-lohp KAN-yen', speak:'Upper Antelope Canyon',
+          tags:['tw:⚠️ 1-2 個月前預訂:⚠️ Book 1-2 mo ahead'], map:'Upper Antelope Canyon Page', link:'https://www.lakepowell.com' },
+        { id:'ant-horseshoe', emoji:'🌿', name_zh:'Horseshoe Bend', name_en:'Horseshoe Bend',
+          detail_zh:'步行 15 分鐘，免費，清晨去', detail_en:'15 min walk, free, go at dawn',
+          phonetic:'HORS-shoo BEND', speak:'Horseshoe Bend Page Arizona',
+          tags:['tf:免費:Free'], map:'Horseshoe Bend Page Arizona', link:'' },
+      ]
+    },
+    { id:'gc', emoji:'🏜️', name_zh:'大峽谷', name_en:'Grand Canyon', bg:'bg-gc', days:2,
+      hotel: { name:'Williams, AZ 鎮上', name_en:'Williams, AZ town', detail:'Budget Inn / Holiday Inn Express', price:'$50–70', map:'Williams Arizona hotels' },
+      places: [
+        { id:'gc-mather', emoji:'🌿', name_zh:'Mather Point', name_en:'Mather Point',
+          detail_zh:'南緣最經典觀景台', detail_en:'Most iconic South Rim viewpoint',
+          phonetic:'MAY-ther', speak:'Mather Point Grand Canyon',
+          tags:[], map:'Mather Point Grand Canyon', link:'' },
+        { id:'gc-bright', emoji:'🌿', name_zh:'Bright Angel Trail', name_en:'Bright Angel Trail',
+          detail_zh:'峽谷內健行 2-4h，記得帶水', detail_en:'2-4h hike into canyon, bring water',
+          phonetic:'BRYT AYN-jul', speak:'Bright Angel Trail Grand Canyon',
+          tags:[], map:'Bright Angel Trailhead Grand Canyon', link:'' },
+        { id:'gc-desert', emoji:'🌿', name_zh:'Desert View Drive', name_en:'Desert View Drive',
+          detail_zh:'十幾個觀景台，自駕最完整', detail_en:'A dozen overlooks, best by car',
+          phonetic:'DEZ-ert vyoo', speak:'Desert View Drive Grand Canyon',
+          tags:[], map:'Desert View Drive Grand Canyon', link:'' },
+      ]
+    },
+  ]
+};
+
+const CAT_CFG = {food:{ic:'🍜',nm_zh:'餐飲',nm_en:'Food'},trans:{ic:'🚇',nm_zh:'交通',nm_en:'Transit'},hotel:{ic:'🏨',nm_zh:'住宿',nm_en:'Hotel'},show:{ic:'🎭',nm_zh:'演出',nm_en:'Show'},shop:{ic:'🛍️',nm_zh:'購物',nm_en:'Shop'},other:{ic:'📌',nm_zh:'其他',nm_en:'Other'}};
+
+// ═══════════════ STATE ═══════════════
+let trip = JSON.parse(localStorage.getItem('trip_v4') || localStorage.getItem('trip_v3') || 'null') || JSON.parse(JSON.stringify(DEFAULT_TRIP));
+let visited = JSON.parse(localStorage.getItem('visited_v4') || localStorage.getItem('visited_v3') || '[]');
+let expenses = JSON.parse(localStorage.getItem('expenses_v4') || localStorage.getItem('expenses_v3') || '[]');
+let lang = localStorage.getItem('lang_v4') || localStorage.getItem('lang_v3') || 'zh';
+let openCities = JSON.parse(localStorage.getItem('open_cities_v4') || localStorage.getItem('open_cities_v3') || '[]');
+let rates = JSON.parse(localStorage.getItem('rates_v1') || 'null') || JSON.parse(JSON.stringify(DEFAULT_RATES));
+let baseCurrency = localStorage.getItem('baseCurrency_v1') || 'TWD'; // user's home currency for display
+
+let modalCtx = {}; // for current modal context
+let selCatKey = 'food';
+let selTypeEmoji = '🖼️';
+let entryCurrency = baseCurrency; // current selection in expense form
+
+// ═══════════════ SAVE ═══════════════
+function saveTrip(){ localStorage.setItem('trip_v4', JSON.stringify(trip)); }
+function saveVisited(){ localStorage.setItem('visited_v4', JSON.stringify(visited)); }
+function saveExpenses(){ localStorage.setItem('expenses_v4', JSON.stringify(expenses)); }
+function saveOpen(){ localStorage.setItem('open_cities_v4', JSON.stringify(openCities)); }
+function saveRates(){ localStorage.setItem('rates_v1', JSON.stringify(rates)); localStorage.setItem('baseCurrency_v1', baseCurrency); }
+
+// ═══════════════ LANG ═══════════════
+function toggleLang(){
+  lang = lang === 'zh' ? 'en' : 'zh';
+  localStorage.setItem('lang_v4', lang);
+  applyLang();
+  renderTrip();
+  renderRates();
+  renderExp();
+  updateRatesBaseDisplay();
+}
+function applyLang(){
+  document.body.classList.toggle('lang-en', lang==='en');
+  document.body.classList.toggle('lang-zh', lang==='zh');
+  const btn = document.getElementById('lang-btn');
+  if (btn){ btn.textContent = lang==='zh' ? 'EN' : '中'; btn.classList.toggle('en-active', lang==='en'); }
+  document.documentElement.setAttribute('lang', lang==='zh' ? 'zh-TW' : 'en');
+}
+const t = (zh, en) => lang === 'zh' ? zh : en;
+
+// ═══════════════ TABS ═══════════════
+function switchTab(tab, el){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  document.getElementById('page-'+tab).classList.add('active');
+  el.classList.add('active');
+  if (tab==='budget') renderExp();
+}
+
+// ═══════════════ DATE HELPERS ═══════════════
+function addDays(s, n){ const d=new Date(s+'T12:00:00'); d.setDate(d.getDate()+n); return d.toISOString().slice(0,10); }
+function fmtDate(s){ if(!s) return '—'; const d=new Date(s+'T12:00:00'); return `${d.getMonth()+1}/${d.getDate()}`; }
+
+function setStartDate(v){ trip.startDate = v; saveTrip(); renderTrip(); }
+
+// ═══════════════ RENDER FLIGHTS ═══════════════
+function renderFlights(){
+  const c = document.getElementById('flight-row');
+  c.innerHTML = trip.flights.map(f => `
+    <div class="flight-card flight-${f.kind}">
+      <div class="flight-label">${t(f.label_zh, f.label_en)}</div>
+      <div class="flight-route">
+        <div class="flight-airport">
+          <div class="flight-code">${f.from}</div>
+          <div class="flight-time">${f.from_t}</div>
+          <div class="flight-terminal">${t(f.from_terminal, f.from_terminal_en)}</div>
+        </div>
+        <div class="flight-mid">
+          <div>${f.airline}</div>
+          <div>${f.duration}</div>
+          <div class="flight-line">──────▶</div>
+          <div>${f.plane}</div>
+        </div>
+        <div class="flight-airport" style="text-align:right">
+          <div class="flight-code">${f.to}</div>
+          <div class="flight-time">${f.to_t}</div>
+          <div class="flight-terminal">${t(f.to_terminal, f.to_terminal_en)}</div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ═══════════════ RENDER TRIP ═══════════════
+function getCityDates(){
+  let cur = trip.startDate;
+  return trip.cities.map(c => {
+    const start = cur;
+    const end = addDays(cur, c.days - 1);
+    cur = addDays(cur, c.days);
+    return { ...c, start, end };
+  });
+}
+
+function renderHero(){
+  document.getElementById('start-date').value = trip.startDate || '2026-05-18';
+  const totalDays = trip.cities.reduce((s,c) => s + c.days, 0);
+  const cities = getCityDates();
+  const endDate = cities.length ? cities[cities.length-1].end : '—';
+  document.getElementById('stat-days').textContent = totalDays;
+  document.getElementById('stat-end').textContent = fmtDate(endDate);
+  // Visited count
+  const totalPlaces = trip.cities.reduce((s,c) => s + c.places.length, 0);
+  const doneCount = visited.length;
+  document.getElementById('stat-visited').textContent = `${doneCount}/${totalPlaces}`;
+  document.getElementById('prog-fill').style.width = (totalPlaces ? doneCount/totalPlaces*100 : 0) + '%';
+}
+
+function renderTrip(){
+  renderFlights();
+  renderHero();
+  const cities = getCityDates();
+  const list = document.getElementById('city-list');
+  list.innerHTML = cities.map((c, idx) => renderCityCard(c, idx)).join('');
+}
+
+function renderCityCard(c, idx){
+  const isOpen = openCities.includes(c.id);
+  const placeDone = c.places.filter(p => visited.includes(p.id)).length;
+  const placeTotal = c.places.length;
+  const lastIdx = trip.cities.length - 1;
+  return `
+    <div class="city-card ${isOpen?'open':''}" id="cc-${c.id}">
+      <div class="city-hdr ${c.bg||'bg-cust'}">
+        <div class="city-emoji" onclick="togCity('${c.id}')">${c.emoji}</div>
+        <div class="city-info" onclick="togCity('${c.id}')">
+          <div class="city-name">${t(c.name_zh, c.name_en)}</div>
+          <div class="city-dates">${fmtDate(c.start)} – ${fmtDate(c.end)}</div>
+          ${placeTotal ? `<span class="city-progress">${placeDone}/${placeTotal} ${t('已去過','visited')}</span>` : ''}
+        </div>
+        <div class="city-days-ctrl">
+          <button class="day-btn" onclick="event.stopPropagation();adjDays(${idx},-1)">−</button>
+          <div><div class="day-num">${c.days}</div></div>
+          <button class="day-btn" onclick="event.stopPropagation();adjDays(${idx},1)">＋</button>
+        </div>
+        <div class="city-ctrls">
+          <button class="city-arr" onclick="event.stopPropagation();moveCity(${idx},-1)" ${idx===0?'disabled style="opacity:.3"':''}>▲</button>
+          <button class="city-arr" onclick="event.stopPropagation();moveCity(${idx},1)" ${idx===lastIdx?'disabled style="opacity:.3"':''}>▼</button>
+        </div>
+        <button class="city-edit-btn" onclick="event.stopPropagation();openEditCity('${c.id}')" title="Edit">✏️</button>
+        <div class="city-toggle" onclick="togCity('${c.id}')">▼</div>
+      </div>
+      <div class="city-content">
+        ${renderHotel(c)}
+        ${renderPlaces(c)}
+        <button class="add-place-btn" onclick="openAddPlace('${c.id}')">＋ ${t('新增景點 / 餐廳 / 交通','Add place / food / transit')}</button>
+        <button class="add-place-btn" style="margin-top:6px;color:#CC3333;border-color:rgba(204,51,51,.3)" onclick="delCity('${c.id}')">🗑️ ${t('刪除這個城市','Delete this city')}</button>
+      </div>
+    </div>
+  `;
+}
+
+function openEditCity(cid){
+  const c = trip.cities.find(x=>x.id===cid);
+  if (!c) return;
+  modalCtx = { cityId: cid };
+  document.getElementById('mce-name-zh').value = c.name_zh || '';
+  document.getElementById('mce-name-en').value = c.name_en || '';
+  document.getElementById('mce-emoji').value = c.emoji || '🏙️';
+  document.getElementById('modal-city-edit').classList.add('show');
+}
+function saveCityEdit(){
+  const c = trip.cities.find(x=>x.id===modalCtx.cityId);
+  if (!c) return;
+  const zh = document.getElementById('mce-name-zh').value.trim();
+  const en = document.getElementById('mce-name-en').value.trim();
+  if (!zh && !en) { alert(t('至少要有一個名稱','Need at least one name')); return; }
+  c.name_zh = zh || en;
+  c.name_en = en || zh;
+  c.emoji = document.getElementById('mce-emoji').value.trim() || c.emoji;
+  saveTrip();
+  closeModal('modal-city-edit');
+  renderTrip();
+}
+
+function openPasteImport(){
+  document.getElementById('paste-textarea').value = '';
+  document.getElementById('modal-paste').classList.add('show');
+}
+
+function renderHotel(c){
+  if (!c.hotel) return '';
+  const h = c.hotel;
+  const hasMap = h.map && h.map.length > 0;
+  return `
+    <div class="hotel-blk">
+      <div class="hotel-blk-icon">🏨</div>
+      <div class="hotel-blk-info">
+        <div class="hotel-blk-name">${t(h.name||'—', h.name_en||h.name||'—')}</div>
+        ${h.detail ? `<div class="hotel-blk-detail">${h.detail}</div>` : ''}
+      </div>
+      ${h.price ? `<div class="hotel-blk-price">${h.price}<br><span style="font-size:9px;color:var(--muted);font-weight:400">/${t('晚','night')}</span></div>` : ''}
+      ${hasMap ? `<a class="iconbtn ib-map" href="${mapUrl(h.map)}" target="_blank" style="text-decoration:none">📍</a>` : ''}
+      <button class="hotel-edit" onclick="openEditHotel('${c.id}')">✏️</button>
+    </div>
+  `;
+}
+
+function renderPlaces(c){
+  if (!c.places.length) return '';
+  // Group by emoji/type
+  const groups = {};
+  c.places.forEach(p => {
+    const key = p.emoji || '📌';
+    if (!groups[key]) groups[key] = [];
+    groups[key].push(p);
+  });
+  const groupOrder = ['🖼️','🏝️','🌿','🛍️','🍜','🎭','🚇','🏨','📌'];
+  const groupNames = {
+    '🖼️':[t('美術館','Museums')],'🏝️':[t('必去景點','Must See')],
+    '🌿':[t('自然','Nature')],'🛍️':[t('購物','Shops')],
+    '🍜':[t('餐廳','Food')],'🎭':[t('演出','Shows')],
+    '🚇':[t('交通','Transit')],'🏨':[t('住宿','Hotels')],'📌':[t('其他','Other')]
+  };
+  let html = '';
+  groupOrder.forEach(emo => {
+    if (!groups[emo]) return;
+    html += `<div class="sec-title">${emo} <span>${groupNames[emo][0]}</span> <span class="sec-count">${groups[emo].length}</span></div>`;
+    groups[emo].forEach(p => { html += renderPlace(p, c.id); });
+  });
+  return html;
+}
+
+function renderPlace(p, cityId){
+  const isDone = visited.includes(p.id);
+  const isCust = p.id.startsWith('cust-');
+  const tagsHtml = (p.tags||[]).map(tag => {
+    if (tag.includes(':')) {
+      const [cls, zh, en] = tag.split(':');
+      return `<span class="tag ${cls}">${t(zh, en)}</span>`;
+    }
+    return `<span class="tag ts">${tag}</span>`;
+  }).join('');
+  const pronHtml = p.phonetic ? `
+    <div class="pron-wrap">
+      <span class="pron-chip">🗣 ${p.phonetic}</span>
+      <button class="speak-btn" onclick="speakPlace('${p.id}')">🔊</button>
+    </div>` : '';
+  const transitHtml = p.transit ? `<div class="hotel-blk-detail" style="margin-top:4px;color:var(--sky)">🚇 ${p.transit}</div>` : '';
+  return `
+    <div class="place ${isCust?'cust':''} ${isDone?'done':''}" id="pi-${p.id}">
+      <div class="chk ${isDone?'done':''}" onclick="togVisit('${p.id}')">${isDone?'✓':''}</div>
+      <div class="place-info">
+        <div class="place-name">${t(p.name_zh, p.name_en||p.name_zh)}</div>
+        ${p.detail_zh || p.detail_en ? `<div class="place-detail">${t(p.detail_zh||'', p.detail_en||p.detail_zh||'')}</div>` : ''}
+        ${transitHtml}
+        ${tagsHtml ? `<div class="tags">${tagsHtml}</div>` : ''}
+        ${pronHtml}
+      </div>
+      <div class="place-actions">
+        ${p.map ? `<a class="iconbtn ib-map" href="${mapUrl(p.map)}" target="_blank" style="text-decoration:none">📍</a>` : ''}
+        ${p.link ? `<a class="iconbtn ib-link" href="${p.link}" target="_blank" style="text-decoration:none">🔗</a>` : ''}
+        <button class="iconbtn ib-edit" onclick="openEditPlace('${cityId}','${p.id}')">✏️</button>
+        ${isCust ? `<button class="iconbtn ib-del" onclick="delPlace('${cityId}','${p.id}')">✕</button>` : ''}
+      </div>
+    </div>
+  `;
+}
+
+function mapUrl(q){
+  if (!q) return '#';
+  if (q.startsWith('http')) return q;
+  return 'https://maps.google.com/?q=' + encodeURIComponent(q);
+}
+
+// ═══════════════ TRIP ACTIONS ═══════════════
+function togCity(id){
+  const i = openCities.indexOf(id);
+  if (i === -1) openCities.push(id); else openCities.splice(i, 1);
+  saveOpen();
+  document.getElementById('cc-'+id).classList.toggle('open');
+}
+function adjDays(idx, d){
+  trip.cities[idx].days = Math.max(1, trip.cities[idx].days + d);
+  saveTrip();
+  renderTrip();
+}
+function moveCity(idx, dir){
+  const j = idx + dir;
+  if (j < 0 || j >= trip.cities.length) return;
+  [trip.cities[idx], trip.cities[j]] = [trip.cities[j], trip.cities[idx]];
+  saveTrip();
+  renderTrip();
+}
+function delCity(id){
+  const c = trip.cities.find(x=>x.id===id);
+  if (!c) return;
+  if (!confirm(t(`確定刪除「${c.name_zh}」？所有景點和打勾紀錄都會清除`, `Delete "${c.name_en||c.name_zh}"? All places and checkmarks will be removed`))) return;
+  // Remove visited entries for this city
+  c.places.forEach(p => { const i = visited.indexOf(p.id); if (i!==-1) visited.splice(i,1); });
+  trip.cities = trip.cities.filter(x=>x.id!==id);
+  saveTrip(); saveVisited();
+  renderTrip();
+}
+function togVisit(pid){
+  const i = visited.indexOf(pid);
+  if (i === -1) visited.push(pid); else visited.splice(i, 1);
+  saveVisited();
+  renderTrip();
+}
+
+// ═══════════════ ADD CITY ═══════════════
+function openAddCity(){
+  document.getElementById('mc-name-zh').value = '';
+  document.getElementById('mc-name-en').value = '';
+  document.getElementById('mc-emoji').value = '🏙️';
+  document.getElementById('mc-days').value = '3';
+  document.getElementById('modal-city').classList.add('show');
+}
+function saveCity(){
+  const nameZh = document.getElementById('mc-name-zh').value.trim();
+  const nameEn = document.getElementById('mc-name-en').value.trim();
+  if (!nameZh && !nameEn) { alert(t('請輸入名稱','Please enter a name')); return; }
+  const newCity = {
+    id: 'city-' + Date.now(),
+    emoji: document.getElementById('mc-emoji').value.trim() || '🏙️',
+    name_zh: nameZh || nameEn,
+    name_en: nameEn || nameZh,
+    bg: 'bg-cust',
+    days: parseInt(document.getElementById('mc-days').value) || 3,
+    hotel: { name: '', name_en: '', detail: '', price: '', map: '' },
+    places: []
+  };
+  trip.cities.push(newCity);
+  saveTrip();
+  closeModal('modal-city');
+  renderTrip();
+}
+
+// ═══════════════ ADD/EDIT PLACE ═══════════════
+function openAddPlace(cityId){
+  modalCtx = { mode:'add', cityId };
+  document.getElementById('mp-title').innerHTML = t('新增到 ','Add to ') + (trip.cities.find(c=>c.id===cityId)?.[lang==='zh'?'name_zh':'name_en'] || '');
+  document.getElementById('mp-name').value = '';
+  document.getElementById('mp-detail').value = '';
+  document.getElementById('mp-transit').value = '';
+  document.getElementById('mp-map').value = '';
+  document.getElementById('mp-link').value = '';
+  document.querySelectorAll('#mp-types .type-btn').forEach((b,i) => b.classList.toggle('sel', i===0));
+  selTypeEmoji = '🖼️';
+  document.getElementById('modal-place').classList.add('show');
+  setTimeout(() => document.getElementById('mp-name').focus(), 100);
+}
+function openEditPlace(cityId, pid){
+  const city = trip.cities.find(c=>c.id===cityId);
+  const p = city?.places.find(x=>x.id===pid);
+  if (!p) return;
+  modalCtx = { mode:'edit', cityId, pid };
+  document.getElementById('mp-title').textContent = t('編輯景點','Edit place');
+  document.getElementById('mp-name').value = lang==='zh' ? p.name_zh : (p.name_en||p.name_zh);
+  document.getElementById('mp-detail').value = lang==='zh' ? (p.detail_zh||'') : (p.detail_en||p.detail_zh||'');
+  document.getElementById('mp-transit').value = p.transit || '';
+  document.getElementById('mp-map').value = p.map || '';
+  document.getElementById('mp-link').value = p.link || '';
+  document.querySelectorAll('#mp-types .type-btn').forEach(b => b.classList.toggle('sel', b.dataset.emoji===p.emoji));
+  selTypeEmoji = p.emoji || '🖼️';
+  document.getElementById('modal-place').classList.add('show');
+}
+function selType(el){
+  document.querySelectorAll('#mp-types .type-btn').forEach(b=>b.classList.remove('sel'));
+  el.classList.add('sel');
+  selTypeEmoji = el.dataset.emoji;
+}
+function savePlace(){
+  const name = document.getElementById('mp-name').value.trim();
+  if (!name) { alert(t('請輸入名稱','Please enter a name')); return; }
+  const detail = document.getElementById('mp-detail').value.trim();
+  const transit = document.getElementById('mp-transit').value.trim();
+  const map = document.getElementById('mp-map').value.trim();
+  const link = document.getElementById('mp-link').value.trim();
+  const city = trip.cities.find(c=>c.id===modalCtx.cityId);
+  if (!city) return;
+  if (modalCtx.mode === 'add') {
+    city.places.push({
+      id: 'cust-' + Date.now(),
+      emoji: selTypeEmoji,
+      name_zh: name, name_en: name,
+      detail_zh: detail, detail_en: detail,
+      transit, map, link, tags: []
+    });
+  } else {
+    const p = city.places.find(x=>x.id===modalCtx.pid);
+    if (!p) return;
+    p.emoji = selTypeEmoji;
+    if (lang === 'zh') { p.name_zh = name; if (!p.name_en) p.name_en = name; p.detail_zh = detail; }
+    else { p.name_en = name; if (!p.name_zh) p.name_zh = name; p.detail_en = detail; }
+    p.transit = transit; p.map = map; p.link = link;
+  }
+  saveTrip();
+  closeModal('modal-place');
+  renderTrip();
+}
+function delPlace(cityId, pid){
+  if (!confirm(t('確定刪除這個景點？','Delete this place?'))) return;
+  const city = trip.cities.find(c=>c.id===cityId);
+  if (!city) return;
+  city.places = city.places.filter(p => p.id !== pid);
+  const i = visited.indexOf(pid);
+  if (i !== -1) visited.splice(i, 1);
+  saveTrip(); saveVisited();
+  renderTrip();
+}
+function closeModal(id){ document.getElementById(id).classList.remove('show'); }
+
+// ═══════════════ HOTEL EDIT ═══════════════
+function openEditHotel(cityId){
+  modalCtx = { cityId };
+  const city = trip.cities.find(c=>c.id===cityId);
+  if (!city) return;
+  if (!city.hotel) city.hotel = { name:'', detail:'', price:'', map:'' };
+  document.getElementById('mh-name').value = lang==='zh' ? (city.hotel.name||'') : (city.hotel.name_en||city.hotel.name||'');
+  document.getElementById('mh-detail').value = city.hotel.detail || '';
+  document.getElementById('mh-price').value = city.hotel.price || '';
+  document.getElementById('mh-map').value = city.hotel.map || '';
+  document.getElementById('modal-hotel').classList.add('show');
+}
+function saveHotel(){
+  const city = trip.cities.find(c=>c.id===modalCtx.cityId);
+  if (!city) return;
+  if (!city.hotel) city.hotel = {};
+  const name = document.getElementById('mh-name').value.trim();
+  if (lang === 'zh') { city.hotel.name = name; if (!city.hotel.name_en) city.hotel.name_en = name; }
+  else { city.hotel.name_en = name; if (!city.hotel.name) city.hotel.name = name; }
+  city.hotel.detail = document.getElementById('mh-detail').value.trim();
+  city.hotel.price = document.getElementById('mh-price').value.trim();
+  city.hotel.map = document.getElementById('mh-map').value.trim();
+  saveTrip();
+  closeModal('modal-hotel');
+  renderTrip();
+}
+
+// ═══════════════ SPEECH ═══════════════
+function speakPlace(pid){
+  let speak = '';
+  for (const c of trip.cities) {
+    const p = c.places.find(x=>x.id===pid);
+    if (p) { speak = p.speak || p.name_en || p.name_zh; break; }
+  }
+  if (!speak) return;
+  const btn = event.currentTarget;
+  if (window.speechSynthesis.speaking) {
+    window.speechSynthesis.cancel();
+    document.querySelectorAll('.speak-btn').forEach(b=>b.classList.remove('speaking'));
+    return;
+  }
+  const u = new SpeechSynthesisUtterance(speak);
+  u.lang = 'en-US'; u.rate = 0.85;
+  u.onstart = () => btn.classList.add('speaking');
+  u.onend = () => btn.classList.remove('speaking');
+  u.onerror = () => btn.classList.remove('speaking');
+  window.speechSynthesis.speak(u);
+}
+
+// ═══════════════ BUDGET ═══════════════
+function selCat(el, k){
+  document.querySelectorAll('.cat-card').forEach(c=>c.classList.remove('sel'));
+  el.classList.add('sel');
+  selCatKey = k;
+}
+function addExp(){
+  const desc = document.getElementById('ei-desc').value.trim();
+  const amt = parseFloat(document.getElementById('ei-amt').value);
+  const cur = document.getElementById('ei-cur').value;
+  const city = document.getElementById('ei-city').value.trim() || '—';
+  const date = document.getElementById('ei-date').value || new Date().toISOString().slice(0,10);
+  if (!desc || isNaN(amt) || amt <= 0) { alert(t('請填入說明和金額！','Enter description and amount')); return; }
+  if (!rates[cur]) { alert('Unknown currency'); return; }
+  // Always store in USD as canonical
+  const usd = amt * rates[cur].toUSD;
+  expenses.unshift({ id:Date.now(), desc, amt, cur, usd, cat:selCatKey, city, date });
+  saveExpenses();
+  document.getElementById('ei-desc').value = '';
+  document.getElementById('ei-amt').value = '';
+  renderExp();
+}
+function delExp(id){
+  expenses = expenses.filter(e=>e.id!==id);
+  saveExpenses();
+  renderExp();
+}
+// Convert USD amount to display in baseCurrency
+function toBase(usd){
+  const r = rates[baseCurrency];
+  if (!r) return usd;
+  return usd / r.toUSD;
+}
+function fmtMoney(amt, cur){
+  const r = rates[cur];
+  if (!r) return amt.toFixed(0);
+  // No decimals for JPY, KRW, TWD; 0-1 decimals for others
+  const noDec = ['JPY','KRW','TWD','HKD','CNY','THB'].includes(cur);
+  return r.symbol + (noDec ? Math.round(amt).toLocaleString() : amt.toFixed(amt < 100 ? 1 : 0));
+}
+function renderExp(){
+  // Update currency dropdown options
+  const sel = document.getElementById('ei-cur');
+  if (sel) {
+    const cur = sel.value || entryCurrency;
+    sel.innerHTML = Object.keys(rates).map(c => `<option value="${c}"${c===cur?' selected':''}>${c} ${rates[c].symbol}</option>`).join('');
+  }
+  const totUSD = expenses.reduce((s,e)=>s+e.usd, 0);
+  const totBase = toBase(totUSD);
+  // Total in base currency
+  document.getElementById('b-total').textContent = fmtMoney(totBase, baseCurrency);
+  // Show USD as alt if base !== USD
+  const altEl = document.getElementById('b-twd');
+  if (baseCurrency === 'USD') altEl.textContent = '';
+  else altEl.textContent = '≈ ' + fmtMoney(totUSD, 'USD');
+  const cats = {};
+  expenses.forEach(e => { cats[e.cat] = (cats[e.cat]||0) + e.usd; });
+  const mx = Math.max(...Object.values(cats), 1);
+  ['food','trans','hotel','show','shop','other'].forEach(k => {
+    const aUSD = cats[k] || 0;
+    const aBase = toBase(aUSD);
+    document.getElementById('bf-'+k).style.width = (aUSD/mx*100) + '%';
+    document.getElementById('ba-'+k).textContent = fmtMoney(aBase, baseCurrency);
+    document.getElementById('ct-'+k).textContent = fmtMoney(aBase, baseCurrency);
+  });
+  const c = document.getElementById('exp-list');
+  if (!expenses.length) { c.innerHTML = `<div class="empty"><span class="empty-ic">💸</span>${t('還沒有花費記錄','No expenses yet')}</div>`; return; }
+  c.innerHTML = expenses.map(e => {
+    const cf = CAT_CFG[e.cat] || CAT_CFG.other;
+    const d = fmtMoney(e.amt, e.cur);
+    // Show converted amount in base currency
+    const baseAmt = toBase(e.usd);
+    const s = e.cur === baseCurrency ? '' : '≈ ' + fmtMoney(baseAmt, baseCurrency);
+    return `<div class="exp-item">
+      <div class="exp-cat-ic">${cf.ic}</div>
+      <div class="exp-info"><div class="exp-desc">${e.desc}</div><div class="exp-meta">${e.city} · ${e.date} · ${t(cf.nm_zh, cf.nm_en)}</div></div>
+      <div class="exp-amt">${d}${s ? `<span class="exp-usd">${s}</span>` : ''}</div>
+      <button class="del-btn" onclick="delExp(${e.id})">✕</button>
+    </div>`;
+  }).join('');
+}
+
+// ═══════════════ CURRENCY SETTINGS ═══════════════
+function renderRates(){
+  const c = document.getElementById('rates-list');
+  if (!c) return;
+  c.innerHTML = Object.keys(rates).map(code => {
+    const r = rates[code];
+    const isBase = code === baseCurrency;
+    // Display as: 1 [code] = X USD (or, more readable: how many [code] per USD)
+    const perUSD = (1 / r.toUSD).toFixed(code==='JPY'||code==='KRW' ? 0 : 2);
+    return `<div class="rate-item ${isBase?'rate-base':''}">
+      <div class="rate-info">
+        <div class="rate-name">
+          <strong>${r.symbol} ${code}</strong>
+          <span class="rate-fullname">${t(r.name_zh, r.name_en)}</span>
+          ${isBase ? `<span class="rate-badge">${t('主幣值','BASE')}</span>` : ''}
+        </div>
+        <div class="rate-formula">1 USD = <input class="rate-input" type="number" step="0.0001" value="${perUSD}" onchange="updateRate('${code}', this.value)" ${code==='USD'?'disabled':''}/> ${code}</div>
+      </div>
+      <div class="rate-actions">
+        ${!isBase ? `<button class="iconbtn ib-edit" onclick="setBase('${code}')" title="Set as base">⭐</button>` : ''}
+        ${code !== 'USD' && !isBase ? `<button class="iconbtn ib-del" onclick="delRate('${code}')">✕</button>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+}
+function updateRate(code, perUSDStr){
+  const perUSD = parseFloat(perUSDStr);
+  if (isNaN(perUSD) || perUSD <= 0) { renderRates(); return; }
+  rates[code].toUSD = 1 / perUSD;
+  saveRates();
+  renderExp(); // update totals
+}
+function setBase(code){
+  baseCurrency = code;
+  saveRates();
+  renderRates();
+  renderExp();
+  updateRatesBaseDisplay();
+}
+function delRate(code){
+  if (code === 'USD' || code === baseCurrency) return;
+  if (!confirm(t(`移除 ${code}？`, `Remove ${code}?`))) return;
+  delete rates[code];
+  saveRates();
+  renderRates();
+  renderExp();
+}
+function openAddRate(){
+  document.getElementById('mr-code').value = '';
+  document.getElementById('mr-symbol').value = '';
+  document.getElementById('mr-name').value = '';
+  document.getElementById('mr-perusd').value = '';
+  document.getElementById('modal-rate').classList.add('show');
+}
+function saveRate(){
+  const code = document.getElementById('mr-code').value.trim().toUpperCase();
+  const symbol = document.getElementById('mr-symbol').value.trim() || code;
+  const name = document.getElementById('mr-name').value.trim() || code;
+  const perUSD = parseFloat(document.getElementById('mr-perusd').value);
+  if (!code || isNaN(perUSD) || perUSD <= 0) { alert(t('請填入幣別代碼和匯率','Enter code and rate')); return; }
+  rates[code] = { code, symbol, name_zh:name, name_en:name, toUSD: 1/perUSD };
+  saveRates();
+  closeModal('modal-rate');
+  renderRates();
+  renderExp();
+}
+
+// ═══════════════ NOTES ═══════════════
+function saveNote(){
+  localStorage.setItem('note_v4', document.getElementById('n1').value);
+  const b = event.currentTarget;
+  const orig = b.innerHTML;
+  b.textContent = '✅';
+  setTimeout(() => b.innerHTML = orig, 1200);
+}
+function loadNote(){
+  const n = localStorage.getItem('note_v4') || localStorage.getItem('note_v3') || localStorage.getItem('usa_note') || '';
+  document.getElementById('n1').value = n;
+}
+
+// ═══════════════ BACKUP / RESTORE / CLEAR ═══════════════
+function exportData(){
+  const data = {
+    version: 4,
+    exported: new Date().toISOString(),
+    trip, visited, expenses, lang,
+    rates, baseCurrency,
+    note: localStorage.getItem('note_v4') || localStorage.getItem('note_v3') || ''
+  };
+  const json = JSON.stringify(data, null, 2);
+  const filename = `trip-backup_${new Date().toISOString().slice(0,10)}.json`;
+
+  // Try modern Web Share API (best on iOS)
+  if (navigator.share && navigator.canShare) {
+    try {
+      const file = new File([json], filename, { type:'application/json' });
+      if (navigator.canShare({ files:[file] })) {
+        navigator.share({ files:[file], title:'Trip Backup' })
+          .then(() => showMsg(t('✅ 備份已分享','✅ Backup shared')))
+          .catch(() => downloadFallback(json, filename));
+        return;
+      }
+    } catch(e) { /* fallthrough */ }
+  }
+  downloadFallback(json, filename);
+}
+
+function downloadFallback(json, filename){
+  // Try blob download
+  try {
+    const blob = new Blob([json], { type:'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = filename;
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 100);
+    showMsg(t('✅ 備份已下載（檢查下載資料夾）','✅ Downloaded (check Downloads folder)'));
+  } catch(e) {
+    // Last resort: show JSON in modal so user can long-press copy
+    showCopyModal(json);
+  }
+  // Always also offer copy fallback
+  setTimeout(() => showCopyModal(json, true), 500);
+}
+
+function showCopyModal(json, asBackup){
+  document.getElementById('copy-textarea').value = json;
+  document.getElementById('copy-title').textContent = asBackup
+    ? t('💾 備份內容（如果下載失敗，請複製此處文字保存）','💾 Backup data (if download failed, copy this text to save)')
+    : t('💾 備份內容','💾 Backup data');
+  document.getElementById('modal-copy').classList.add('show');
+}
+function copyBackupText(){
+  const ta = document.getElementById('copy-textarea');
+  ta.select(); ta.setSelectionRange(0, 999999);
+  let ok = false;
+  try { ok = document.execCommand('copy'); } catch(e) {}
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(ta.value).then(() => {
+      const btn = document.getElementById('copy-btn');
+      btn.textContent = '✅';
+      setTimeout(() => btn.textContent = '📋', 1500);
+    }).catch(() => alert(t('複製失敗，請長按文字手動複製','Copy failed, please long-press text to copy manually')));
+  } else if (ok) {
+    const btn = document.getElementById('copy-btn');
+    btn.textContent = '✅';
+    setTimeout(() => btn.textContent = '📋', 1500);
+  }
+}
+function importData(e){
+  const f = e.target.files[0]; if (!f) return;
+  const r = new FileReader();
+  r.onload = ev => parseAndImport(ev.target.result);
+  r.readAsText(f);
+  e.target.value = '';
+}
+function importPasted(){
+  const text = document.getElementById('paste-textarea').value.trim();
+  if (!text) { alert(t('請先貼上備份內容','Please paste backup content first')); return; }
+  parseAndImport(text);
+  closeModal('modal-paste');
+}
+function parseAndImport(text){
+  try {
+    const d = JSON.parse(text);
+    if (d.trip) { trip = d.trip; saveTrip(); }
+    if (d.visited) { visited = d.visited; saveVisited(); }
+    if (d.expenses) { expenses = d.expenses; saveExpenses(); }
+    if (d.note != null) localStorage.setItem('note_v4', d.note);
+    if (d.lang) { lang = d.lang; localStorage.setItem('lang_v4', lang); }
+    if (d.rates) { rates = d.rates; saveRates(); }
+    if (d.baseCurrency) { baseCurrency = d.baseCurrency; saveRates(); }
+    applyLang();
+    renderTrip(); renderExp(); renderRates(); loadNote();
+    showMsg(t('✅ 資料已還原！','✅ Data restored!'));
+  } catch (err) {
+    showMsg(t('❌ 檔案格式錯誤：'+err.message,'❌ Invalid file: '+err.message), true);
+  }
+}
+function clearAll(){
+  const msg = lang==='zh'
+    ? '⚠️ 確定清除全部資料嗎？\n\n所有自訂城市、景點、打勾、記帳、筆記都會消失，無法復原。\n\n建議先按「匯出備份」存一份。'
+    : '⚠️ Clear ALL data?\n\nAll custom cities, places, checkmarks, expenses, and notes will be lost permanently.\n\nWe recommend "Export Backup" first.';
+  if (!confirm(msg)) return;
+  // Clear EVERY app-related key (be exhaustive to handle legacy too)
+  const keysToDel = [];
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i);
+    if (k && (k.startsWith('trip_') || k.startsWith('visited_') || k.startsWith('expenses_') ||
+              k.startsWith('note_') || k.startsWith('open_cities') || k.startsWith('lang_') ||
+              k.startsWith('rates_') || k.startsWith('usa_'))) {
+      keysToDel.push(k);
+    }
+  }
+  keysToDel.forEach(k => localStorage.removeItem(k));
+  // Reset in-memory state
+  trip = JSON.parse(JSON.stringify(DEFAULT_TRIP));
+  visited = []; expenses = []; openCities = []; lang = 'zh';
+  rates = JSON.parse(JSON.stringify(DEFAULT_RATES));
+  baseCurrency = 'USD';
+  applyLang();
+  const noteEl = document.getElementById('n1');
+  if (noteEl) noteEl.value = '';
+  renderTrip(); renderExp(); renderRates();
+  showMsg(lang==='zh' ? '🗑️ 已清除全部資料，回到預設模板' : '🗑️ All data cleared, reset to template');
+  // Scroll to top to make reset visible
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function showMsg(text, isErr){
+  const el = document.getElementById('bk-msg');
+  el.textContent = text;
+  el.style.color = isErr ? 'var(--coral)' : 'var(--green)';
+  setTimeout(() => el.textContent = '', 3000);
+}
+
+// ═══════════════ INIT ═══════════════
+function init(){
+  applyLang();
+  renderTrip();
+  renderRates();
+  renderExp();
+  loadNote();
+  updateRatesBaseDisplay();
+  document.getElementById('ei-date').value = new Date().toISOString().slice(0,10);
+}
+function updateRatesBaseDisplay(){
+  const el = document.getElementById('rates-base-display');
+  if (el) el.textContent = (lang==='zh' ? '目前主幣值：' : 'Base: ') + baseCurrency;
+}
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
